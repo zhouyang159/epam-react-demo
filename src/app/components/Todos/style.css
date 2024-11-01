@@ -1,0 +1,22 @@
+
+
+
+.todos-container{
+    padding: 10px;
+    background: antiquewhite;
+    margin-top: 10px;
+}
+
+.todo-item {
+    background: #d7faee;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
