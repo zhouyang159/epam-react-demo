@@ -20,7 +20,7 @@ export default function Todos() {
       {
         id: "111",
         content: "下班去买菜",
-        finish: false,
+        finish: true,
       },
       {
         id: "222",
@@ -39,7 +39,6 @@ export default function Todos() {
   }
 
   const addTodo = (content: string) => {
-
     const newTodos = [
       ...todos,
       {
@@ -50,6 +49,17 @@ export default function Todos() {
     ]
 
     setTodos(newTodos)
+  }
+
+  const toggleFinish = (id: string) => {
+    setTodos((prevTodos) => {
+      return prevTodos.map(todo => {
+        if (todo.id === id) {
+          return {...todo, finish: !todo.finish};
+        }
+        return todo;
+      });
+    });
   }
 
 
@@ -65,19 +75,26 @@ export default function Todos() {
       <div className="todos-container">
         {
           todos.map((todo: Index, index: number) => {
-
             return <div
               className="todo-item"
               key={todo.id}
             >
               <div>
                 <span className="font-bold mr-2">{index + 1}</span>
+                <span
+                  className={todo.finish ? "line-through cursor-pointer" : "cursor-pointer"}
+                  onClick={() => {
+                    toggleFinish(todo.id)
+                  }}
+                >
                 {todo.content}
+                </span>
               </div>
               <button
                 onClick={() => deleteTodo(todo.id)}
                 className="font-bold"
-              >X
+              >
+                X
               </button>
             </div>
           })
