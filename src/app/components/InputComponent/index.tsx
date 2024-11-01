@@ -2,8 +2,11 @@
 
 import {useState} from "react";
 
+type InputComponentProps = {
+  addTodo: Function
+}
 
-export default function InputComponent({addTodo}) {
+export default function InputComponent({addTodo}: InputComponentProps) {
   const [inputStr, setInputStr] = useState("")
 
   const add = () => {
